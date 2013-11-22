@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="ok">OK</string>
+    <string name="error">Error</string>
+    <string name="no_init">Error while initializing app.</string>
+    <string name="no_packagemanager">Feature list not found.</string>
+    <string name="no_feature_camera">Camera not found.</string>
+    <string name="no_feature_autofocus">Autofocus not found.</string>
+    <string name="no_feature_flash">Flash not found.</string>
+    <string name="no_camera_control">Cannot take control of the camera.</string>
+    <string name="no_camera_autofocus">Camera does not support autofocus.</string>
+    <string name="no_camera_flash">Camera does not support flashlight mode.</string>
+    <string name="no_camera_display">Cannot set the camera: %s.</string>
+    <string name="flash_check_error">Error checking flash: %s.</string>
+    <string name="flash_set_error">Error setting flash: %s.</string>
+
+</resources>
