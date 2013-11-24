@@ -47,6 +47,14 @@ public class MainActivity
         setFlash(!isFlashOn());
     }
 
+    private void log(String msg)
+    {
+        if (BuildConfig.DEBUG)
+        {
+            Log.d(getString(R.string.app_name), msg);
+        }
+    }
+
     private void showAlert(int msgId)
     {
         showAlert(getString(msgId));
@@ -54,7 +62,10 @@ public class MainActivity
 
     private void showAlert(String msg)
     {
-        Log.e(getString(R.string.app_name), msg);
+        if (BuildConfig.DEBUG)
+        {
+            Log.e(getString(R.string.app_name), msg);
+        }
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle(R.string.error);
@@ -161,11 +172,19 @@ public class MainActivity
         // Initialize componenets
         if (mPowerButton == null)
         {
+            log("INIT mPowerButton");
+
             mPowerButton = (ImageButton) findViewById(R.id.PowerButton);
+        }
+        else
+        {
+            log("mPowerButton OK");
         }
 
         if (mHolder == null)
         {
+            log("INIT mHolder");
+
             SurfaceView preview = (SurfaceView) findViewById(R.id.CameraView);
             mHolder = preview.getHolder();
 
@@ -179,9 +198,15 @@ public class MainActivity
                 mHolder.addCallback(this);
             }
         }
+        else
+        {
+            log("mHolder OK");
+        }
 
         if (mCamera == null)
         {
+            log("INIT mCamera");
+
             mCamera = Camera.open();
 
             if (mCamera == null)
@@ -190,8 +215,14 @@ public class MainActivity
                 return false;
             }
         }
+        else
+        {
+            log("mCamera OK");
+        }
 
         // Check camera features
+        log("Check camera features");
+
         List<String> focusModes = mCamera.getParameters().getSupportedFocusModes();
 
         if (focusModes == null || !focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO))
@@ -208,12 +239,13 @@ public class MainActivity
             return false;
         }
 
+        log("Check camera features OK");
+
         return true;
     }
 
     private void cleanup()
     {
-        setFlash(false);
         mCamera.release();
         mCamera = null;
     }
@@ -223,9 +255,27 @@ public class MainActivity
     {
         super.onCreate(savedInstanceState);
 
+        log("onCreate");
+
         setContentView(R.layout.activity_main);
 
         init();
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
+        log("onStart");
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        log("onResume");
     }
 
     @Override
@@ -233,6 +283,34 @@ public class MainActivity
     {
         super.onPause();
 
+        log("onPause");
+
+        setFlash(false);
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+
+        log("onStop");
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+
+        log("onDestroy");
+
         cleanup();
+    }
+
+    @Override
+    protected void onRestart()
+    {
+        super.onRestart();
+
+        log("onRestart");
     }
 }
