@@ -3,9 +3,11 @@ package com.riccardopedrielli.fastlight;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -21,6 +23,8 @@ public class MainActivity
                    Camera.AutoFocusCallback,
                    DialogInterface.OnClickListener
 {
+    private final Handler handler = new Handler();
+
     private ImageButton mPowerButton = null;
 
     private Camera mCamera = null;
@@ -257,6 +261,11 @@ public class MainActivity
 
         log("onCreate");
 
+        if (getResources().getBoolean(R.bool.portrait_only))
+        {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         setContentView(R.layout.activity_main);
 
         init();
@@ -276,6 +285,18 @@ public class MainActivity
         super.onResume();
 
         log("onResume");
+
+        if (getIntent().getBooleanExtra("LightOn", false))
+        {
+            handler.postDelayed(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    setFlash(true);
+                }
+            }, 100);
+        }
     }
 
     @Override
