@@ -2,6 +2,6 @@
 
 <resources>
 
-    <dimen name="button_size">288dp</dimen>
+    <dimen name="button_size">512dp</dimen>
 
 </resources>

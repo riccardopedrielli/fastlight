@@ -3,6 +3,7 @@ package com.riccardopedrielli.fastlight;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
@@ -259,6 +260,11 @@ public class MainActivity
         super.onCreate(savedInstanceState);
 
         log("onCreate");
+
+        if (getResources().getBoolean(R.bool.portrait_only))
+        {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         setContentView(R.layout.activity_main);
 

@@ -2,6 +2,6 @@
 
 <resources>
 
-    <dimen name="button_size">288dp</dimen>
+    <bool name="portrait_only">false</bool>
 
 </resources>
