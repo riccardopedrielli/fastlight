@@ -1,31 +1,21 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.+'
-    }
-}
 apply plugin: 'android'
-
-repositories {
-    mavenCentral()
-}
-
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.0.0'
+    buildToolsVersion '19.0.3'
 
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
+        versionCode 20131209
+        versionName "2.0"
     }
-    buildTypes {}
-    productFlavors {
-        defaultFlavor {
-proguardFile 'proguard-rules.txt'
-}
-    }
-}
 
-dependencies {}
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+
+}
