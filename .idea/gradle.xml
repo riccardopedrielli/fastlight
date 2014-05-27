@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\Dev\Src\FastLight" />
-            <option value="C:\Dev\Src\FastLight\App" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/App" />
           </set>
         </option>
       </GradleProjectSettings>
