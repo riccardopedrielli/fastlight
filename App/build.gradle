@@ -1,21 +1,40 @@
 apply plugin: 'android'
 android {
+    signingConfigs {
+        riccardopedrielli {
+            keyAlias RICCARDOPEDRIELLI_KEY_ALIAS
+            keyPassword RICCARDOPEDRIELLI_KEY_PASSWORD
+            storeFile file(RICCARDOPEDRIELLI_STORE_FILE)
+            storePassword RICCARDOPEDRIELLI_STORE_PASSWORD
+        }
+    }
     compileSdkVersion 19
     buildToolsVersion '19.1.0'
-
     defaultConfig {
+        applicationId 'com.riccardopedrielli.fastlight'
         minSdkVersion 14
         targetSdkVersion 19
         versionCode 20131209
-        versionName "2.0"
+        versionName '2.0'
     }
-
     buildTypes {
-        release {
+        debug {
+            signingConfig signingConfigs.riccardopedrielli
+            zipAlign true
+            debuggable true
             runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        release {
+            signingConfig signingConfigs.riccardopedrielli
+            zipAlign true
+            debuggable false
+            runProguard true
+            proguardFile 'proguard-rules.txt'
         }
     }
+    productFlavors {
+    }
+}
 
-
+dependencies {
 }
