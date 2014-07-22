@@ -15,14 +15,14 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
         <activity
-                android:name="com.riccardopedrielli.fastlight.MainActivity"
+                android:name=".MainActivity"
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <receiver android:name="com.riccardopedrielli.fastlight.WidgetProvider">
+        <receiver android:name=".WidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>

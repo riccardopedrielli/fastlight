@@ -1,4 +1,5 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
+
 android {
     signingConfigs {
         riccardopedrielli {
@@ -12,7 +13,7 @@ android {
     buildToolsVersion '19.1.0'
     defaultConfig {
         applicationId 'com.riccardopedrielli.fastlight'
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 19
         versionCode 20131209
         versionName '2.0'
@@ -29,7 +30,7 @@ android {
             zipAlign true
             debuggable false
             runProguard true
-            proguardFile 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     productFlavors {
@@ -37,4 +38,5 @@ android {
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
