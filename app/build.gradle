@@ -9,32 +9,39 @@ android {
             storePassword RICCARDOPEDRIELLI_STORE_PASSWORD
         }
     }
-    compileSdkVersion 19
-    buildToolsVersion '19.1.0'
+
+    compileSdkVersion 21
+    buildToolsVersion '21.1.1'
+
     defaultConfig {
         applicationId 'com.riccardopedrielli.fastlight'
         minSdkVersion 15
-        targetSdkVersion 19
+        targetSdkVersion 21
         versionCode 20131209
         versionName '2.0'
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.riccardopedrielli
-            zipAlign true
+            zipAlignEnabled true
             debuggable true
-            runProguard false
+            minifyEnabled false
         }
         release {
             signingConfig signingConfigs.riccardopedrielli
-            zipAlign true
+            zipAlignEnabled true
             debuggable false
-            runProguard true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    productFlavors {
-    }
+
 }
 
 dependencies {
