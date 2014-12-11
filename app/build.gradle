@@ -17,8 +17,8 @@ android {
         applicationId 'com.riccardopedrielli.fastlight'
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 20131209
-        versionName '2.0'
+        versionCode 20141211
+        versionName '3.0'
     }
 
     compileOptions {
