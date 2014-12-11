@@ -31,6 +31,8 @@ public class MainActivity
 
     private SurfaceHolder mHolder = null;
 
+    private boolean mInitOK = false;
+
     public void surfaceChanged(SurfaceHolder holder, int i, int i1, int i2) {}
 
     public void surfaceCreated(SurfaceHolder holder) {}
@@ -94,6 +96,11 @@ public class MainActivity
 
     private void setFlash(boolean on)
     {
+        if (!mInitOK)
+        {
+            return;
+        }
+
         try
         {
             Camera.Parameters parameters = mCamera.getParameters();
@@ -134,6 +141,11 @@ public class MainActivity
 
     private void updatePowerButton()
     {
+        if (!mInitOK)
+        {
+            return;
+        }
+
         if (isFlashOn())
         {
             mPowerButton.setImageResource(R.drawable.ic_power_on);
@@ -250,8 +262,11 @@ public class MainActivity
 
     private void cleanup()
     {
-        mCamera.release();
-        mCamera = null;
+        if(mCamera != null)
+        {
+            mCamera.release();
+            mCamera = null;
+        }
     }
 
     @Override
@@ -268,7 +283,7 @@ public class MainActivity
 
         setContentView(R.layout.activity_main);
 
-        init();
+        mInitOK = init();
     }
 
     @Override
